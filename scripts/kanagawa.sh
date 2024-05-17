@@ -6,6 +6,9 @@ current_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source $current_dir/utils.sh
 
 main() {
+  # Debug: Notify that the plugin script has started
+  tmux display-message "Kanagawa Dragon tmux plugin: Script started"
+
   # set configuration option variables
   show_kubernetes_context_label=$(get_tmux_option "@kanagawa-kubernetes-context-label" "")
   eks_hide_arn=$(get_tmux_option "@kanagawa-kubernetes-eks-hide-arn" false)
@@ -33,6 +36,9 @@ main() {
   IFS=' ' read -r -a plugins <<<$(get_tmux_option "@kanagawa-plugins" "battery network weather")
   show_empty_plugins=$(get_tmux_option "@kanagawa-show-empty-plugins" true)
 
+  # Debug: Notify that configuration options have been set
+  tmux display-message "Kanagawa Dragon tmux plugin: Configuration options set"
+
   # Kanagawa Dragon Color Palette
   white='#DCD7BA'        # fujiWhite
   gray='#1F1F28'         # sumiInk4
@@ -45,6 +51,9 @@ main() {
   red='#E46876'          # autumnRed
   pink='#D27E99'         # sakuraPink
   yellow='#FF9E3B'       # roninYellow
+
+  # Debug: Notify that color palette has been set
+  tmux display-message "Kanagawa Dragon tmux plugin: Color palette set"
 
   # Handle left icon configuration
   case $show_left_icon in
@@ -68,6 +77,9 @@ main() {
     ;;
   esac
 
+  # Debug: Notify that left icon has been configured
+  tmux display-message "Kanagawa Dragon tmux plugin: Left icon set to $left_icon"
+
   # Handle left icon padding
   padding=""
   if [ "$show_left_icon_padding" -gt "0" ]; then
@@ -75,11 +87,17 @@ main() {
   fi
   left_icon="$left_icon$padding"
 
+  # Debug: Notify that left icon padding has been set
+  tmux display-message "Kanagawa Dragon tmux plugin: Left icon padding set"
+
   # Handle powerline option
   if $show_powerline; then
     right_sep="$show_right_sep"
     left_sep="$show_left_sep"
   fi
+
+  # Debug: Notify that powerline option has been handled
+  tmux display-message "Kanagawa Dragon tmux plugin: Powerline option set"
 
   # Set timezone unless hidden by configuration
   if [[ -z "$timezone" ]]; then
@@ -93,6 +111,9 @@ main() {
     esac
   fi
 
+  # Debug: Notify that timezone has been set
+  tmux display-message "Kanagawa Dragon tmux plugin: Timezone set to $timezone"
+
   case $show_flags in
   false)
     flags=""
@@ -104,8 +125,14 @@ main() {
     ;;
   esac
 
+  # Debug: Notify that flags have been set
+  tmux display-message "Kanagawa Dragon tmux plugin: Flags set"
+
   # sets refresh interval to every 5 seconds
   tmux set-option -g status-interval $show_refresh
+
+  # Debug: Notify that refresh interval has been set
+  tmux display-message "Kanagawa Dragon tmux plugin: Refresh interval set"
 
   # set the prefix + t time format
   if $show_military; then
@@ -113,6 +140,9 @@ main() {
   else
     tmux set-option -g clock-mode-style 12
   fi
+
+  # Debug: Notify that clock mode style has been set
+  tmux display-message "Kanagawa Dragon tmux plugin: Clock mode style set"
 
   # set length
   tmux set-option -g status-left-length 100
@@ -126,11 +156,17 @@ main() {
   fi
   tmux set-option -g pane-border-style "fg=${gray}"
 
+  # Debug: Notify that pane border styling has been set
+  tmux display-message "Kanagawa Dragon tmux plugin: Pane border styling set"
+
   # message styling
   tmux set-option -g message-style "bg=${gray},fg=${white}"
 
   # status bar
   tmux set-option -g status-style "bg=${gray},fg=${white}"
+
+  # Debug: Notify that message and status bar styling has been set
+  tmux display-message "Kanagawa Dragon tmux plugin: Message and status bar styling set"
 
   # Status left
   if $show_powerline; then
@@ -140,10 +176,15 @@ main() {
     tmux set-option -g status-left "#[bg=${green},fg=${dark_gray}]#{?client_prefix,#[bg=${yellow}],} ${left_icon}"
   fi
 
+  # Debug: Notify that status left has been set
+  tmux display-message "Kanagawa Dragon tmux plugin: Status left set"
+
   # Status right
   tmux set-option -g status-right ""
 
   for plugin in "${plugins[@]}"; do
+    # Debug: Notify which plugin is being configured
+    tmux display-message "Kanagawa Dragon tmux plugin: Configuring plugin $plugin"
 
     if case $plugin in custom:*) true ;; *) false ;; esac then
       script=${plugin#"custom:"}
