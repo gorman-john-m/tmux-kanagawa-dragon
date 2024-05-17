@@ -274,6 +274,10 @@ main() {
       IFS=' ' read -r -a colors <<<$(get_tmux_option "@kanagawa-spotify-tui-colors" "green dark_gray")
       script="#($current_dir/spotify-tui.sh)"
 
+    elif [ $plugin = "playerctl" ]; then
+      IFS=' ' read -r -a colors <<<$(get_tmux_option "@dracula-playerctl-colors" "green dark_gray")
+      script="#($current_dir/playerctl.sh)"
+
     elif [ $plugin = "kubernetes-context" ]; then
       IFS=' ' read -r -a colors <<<$(get_tmux_option "@kanagawa-kubernetes-context-colors" "cyan dark_gray")
       script="#($current_dir/kubernetes_context.sh $eks_hide_arn $eks_extract_account $hide_kubernetes_user $show_kubernetes_context_label)"
@@ -288,7 +292,7 @@ main() {
 
     elif [ $plugin = "weather" ]; then
       IFS=' ' read -r -a colors <<<$(get_tmux_option "@kanagawa-weather-colors" "orange dark_gray")
-      script="#($current_dir/weather_wrapper.sh $show_fahrenheit $show_location $fixed_location)"
+      script="#($current_dir/weather_wrapper.sh $show_fahrenheit $show_location '$fixed_location')"
 
     elif [ $plugin = "time" ]; then
       IFS=' ' read -r -a colors <<<$(get_tmux_option "@kanagawa-time-colors" "dark_purple white")
