@@ -33,18 +33,18 @@ main() {
   IFS=' ' read -r -a plugins <<<$(get_tmux_option "@kanagawa-plugins" "battery network weather")
   show_empty_plugins=$(get_tmux_option "@kanagawa-show-empty-plugins" true)
 
-  # Kanagawa Color Pallette
-  white='#dcd7ba'        # fujiWhite
-  gray='#2a2a37'         # sumiInk4
-  dark_gray='#1a1a22'    # sumiInk2
-  light_purple='#363646' # sumiInk5
-  dark_purple='#54546D'  # sumiInk6
-  cyan='#6a9589'         # wave aqua
-  green='#938aa9'        # springViolet1
-  orange='#dca561'       # autumn orange
-  red='#e46876'          # wave red
-  pink='#d27e99'         # sakura pink
-  yellow='#ff9e3b'       # roninYellow
+  # Kanagawa Dragon Color Palette
+  white='#DCD7BA'        # fujiWhite
+  gray='#1F1F28'         # sumiInk4
+  dark_gray='#16161D'    # sumiInk2
+  light_purple='#6A6A74' # sumiInk5
+  dark_purple='#727169'  # sumiInk6
+  cyan='#7FB4CA'         # dragonBlue
+  green='#98BB6C'        # autumnGreen
+  orange='#FF9E3B'       # roninYellow
+  red='#E46876'          # autumnRed
+  pink='#D27E99'         # sakuraPink
+  yellow='#FF9E3B'       # roninYellow
 
   # Handle left icon configuration
   case $show_left_icon in
@@ -194,7 +194,7 @@ main() {
 
     elif [ $plugin = "cpu-usage" ]; then
       IFS=' ' read -r -a colors <<<$(get_tmux_option "@kanagawa-cpu-usage-colors" "orange dark_gray")
-      script="#($current_dir/cpu_info.sh)"
+            script="#($current_dir/cpu_info.sh)"
 
     elif [ $plugin = "ram-usage" ]; then
       IFS=' ' read -r -a colors <<<$(get_tmux_option "@kanagawa-ram-usage-colors" "cyan dark_gray")
