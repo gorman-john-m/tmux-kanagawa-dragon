@@ -194,7 +194,7 @@ main() {
 
     elif [ $plugin = "cpu-usage" ]; then
       IFS=' ' read -r -a colors <<<$(get_tmux_option "@kanagawa-cpu-usage-colors" "orange dark_gray")
-            script="#($current_dir/cpu_info.sh)"
+      script="#($current_dir/cpu_info.sh)"
 
     elif [ $plugin = "ram-usage" ]; then
       IFS=' ' read -r -a colors <<<$(get_tmux_option "@kanagawa-ram-usage-colors" "cyan dark_gray")
