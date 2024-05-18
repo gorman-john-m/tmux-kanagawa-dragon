@@ -1,7 +1,7 @@
 
 # Kanagawa for [tmux](https://github.com/tmux/tmux/wiki)
 
-[Kanagawa](https://github.com/rebelot/kanagawa.nvim/tree/master) theme for TMUX with silent colors.
+[Kanagawa-dragon](https://github.com/rebelot/kanagawa.nvim/tree/master) theme for TMUX with silent colors.
 
 Forked from [dracula/tmux](https://github.com/dracula/tmux).
 
@@ -10,13 +10,13 @@ Forked from [dracula/tmux](https://github.com/dracula/tmux).
 ## Install
 To activate the theme add the following line to your `.tmux.conf`.
 
-    set -g @plugin 'Nybkox/tmux-kanagawa'
-For advanced instructions look at [INSTALL.md](https://github.com/Nybkox/tmux-kanagawa/blob/master/INSTALL.md) or check official instructions of [dracula/tmux](https://draculatheme.com/tmux).  Just replace all `dracula` occurrences with `kanagawa`.
+    set -g @plugin 'gorman-john-m/tmux-kanagawa-dragon'
+For advanced instructions look at [INSTALL.md](https://github.com/gorman-john-m/tmux-kanagawa-dragon/blob/master/INSTALL.md) or check official instructions of [dracula/tmux](https://draculatheme.com/tmux).  Just replace all `dracula` occurrences with `kanagawa-dragon`.
 
 ## Configuration
 
 Configuration and options can be found at [draculatheme.com/tmux](https://draculatheme.com/tmux).
-Just replace all `dracula` occurrences with `kanagawa`.
+Just replace all `dracula` occurrences with `kanagawa-dragon`.
 
 ## Features
 
@@ -49,8 +49,8 @@ Just replace all `dracula` occurrences with `kanagawa`.
 ## Known issues
 You may need to manually give permission to plugin's scripts.
 ```bash
-cd ~/.tmux/plugins/tmux-kanagawa
-chmod u+x kanagawa.tmux
+cd ~/.tmux/plugins/tmux-kanagawa-dragon
+chmod u+x kanagawa-dragon.tmux
 chmod u+x ./**/*.sh
 ```
 
